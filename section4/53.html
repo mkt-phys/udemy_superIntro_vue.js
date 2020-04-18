@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <div id="app">
+      <p>{{message}}</p>
+      <p>{{name}}</p>
+      <p>{{myData}}</p>
+      <button @click="name= 'ぼたんから変更'">変更</button>
+    </div>
+
+    <script type="text/javascript">
+      let data = {
+        message: "こんにちは",
+        name: "makito"
+      };
+
+      var vm = new Vue({
+        el: "#app",
+        data: data,
+        computed: {
+          myData: function() {
+            return this.$data;
+          }
+        }
+      });
+
+      vm.$mount();
+    </script>
+  </body>
+</html>

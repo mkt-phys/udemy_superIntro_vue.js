@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <div class="" id="app">
+      <p>現在{{number}}回クリックされています</p>
+      <button @click="countUp(3)">カウントアップ</button>
+      <p v-on:mousemove="changeMousePosition">
+        マウスを載せてください。<span v-on:mousemove="noEvent"
+          >反応させないでください</span
+        >
+      </p>
+      <a v-on:click.prevent.stop="noEvent" href="https://google.com">googke</a>
+      <p>X:{{x}}、Y{{y}}</p>
+
+      <input type="text" v-on:keyup.enter.space="myAlert" />
+    </div>
+
+    <script type="text/javascript">
+      new Vue({
+        el: "#app",
+        data: {
+          message: "HelloWorld?",
+          number: 0,
+          x: 0,
+          y: 0,
+        },
+        methods: {
+          reverseMessage: function () {
+            this.message = this.message.split("").reverse().join("");
+          },
+          countUp: function (times) {
+            this.number += 1 * times;
+          },
+          changeMousePosition: function (event) {
+            // console.log(event);
+            this.x = event.clientX;
+            this.y = event.clientY;
+          },
+          noEvent: function (event) {
+            // event.preventDefault();
+            event.stopPropagation();
+          },
+          myAlert() {
+            alert("アラート");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

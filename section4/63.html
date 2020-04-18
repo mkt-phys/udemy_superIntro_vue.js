@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <div id="app">
+      <p>{{message}}</p>
+      <p>{{name}}</p>
+      <p>{{myData}}</p>
+      <button @click="name= 'ぼたんから変更'">変更</button>
+    </div>
+
+    <div id="app2"></div>
+    <div id="app3">
+      <p>app3</p>
+      <hello></hello>
+    </div>
+    <div id="app4">
+      <p>app4</p>
+      <h1>こんにちは{{name}}</h1>
+      <button @click="name='太郎'">名前を変更</button>
+      <button @click="destroy">インスタンスを破壊</button>
+    </div>
+
+    <script type="text/javascript">
+      let data = {
+        message: "こんにちは",
+        name: "makito"
+      };
+
+      //コンポーネント政策始まり
+      Vue.component("hello", {
+        template: "<p>こんにちは</p>"
+      });
+      //コンポーネント終わり
+
+      var vm = new Vue({
+        // el: "#app",
+        data: data,
+        computed: {
+          myData: function() {
+            return this.$data;
+          }
+        }
+      });
+
+      vm.$mount("#app");
+
+      new Vue({
+        // el: "#app2",
+        data: {
+          name: "まきと"
+        },
+        template: "<h1>こんにちは、{{name}}</h1>"
+      }).$mount("#app2");
+
+      new Vue({
+        data: {
+          name: "まきと"
+        },
+        render: function(createElement) {
+          console.log(createElement("h1", "こんにちは?" + this.name));
+
+          return createElement("h1", "こんにちは?" + this.name);
+        }
+        // }).$mount("#app3");
+      });
+
+      var dir = document.createElement("div");
+      console.log({ dir });
+      console.log(document);
+      console.dir(document);
+
+      new Vue({
+        el: "#app4",
+        data: {
+          name: "まきと"
+        },
+        beforeCreate: function() {
+          console.log("beforeCreate");
+        },
+        created: function() {
+          console.log("created");
+        },
+        beforeMount: function() {
+          console.log("beforeMount");
+        },
+        mounted: function() {
+          console.log("mounted");
+        },
+        beforeUpdate: function() {
+          console.log("beforeUpdate");
+        },
+        updated: function() {
+          console.log("updated");
+        },
+        beforeDestroyed: function() {
+          console.log("beforeDestroyed");
+        },
+        destroyed: function() {
+          console.log("destroyed");
+        },
+        methods: {
+          destroy: function() {
+            this.$destroy();
+          }
+        }
+      });
+
+      new Vue({
+        el: ".hello",
+        template: "<p>こんにちは</p>"
+      });
+    </script>
+  </body>
+</html>

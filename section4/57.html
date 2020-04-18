@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <div id="app">
+      <p>{{message}}</p>
+      <p>{{name}}</p>
+      <p>{{myData}}</p>
+      <button @click="name= 'ぼたんから変更'">変更</button>
+    </div>
+
+    <div id="app2"></div>
+
+    <div id="app3"></div>
+
+    <script type="text/javascript">
+      let data = {
+        message: "こんにちは",
+        name: "makito"
+      };
+
+      var vm = new Vue({
+        // el: "#app",
+        data: data,
+        computed: {
+          myData: function() {
+            return this.$data;
+          }
+        }
+      });
+
+      vm.$mount("#app");
+
+      new Vue({
+        // el: "#app2",
+        data: {
+          name: "まきと"
+        },
+        template: "<h1>こんにちは、{{name}}</h1>"
+      }).$mount("#app2");
+
+      new Vue({
+        data: {
+          name: "まきと"
+        },
+        render: function(createElement) {
+          console.log(createElement("h1", "こんにちは?" + this.name));
+
+          return createElement("h1", "こんにちは?" + this.name);
+        }
+      }).$mount("#app3");
+
+      var dir = document.createElement("div");
+      console.log({ dir });
+      console.log(document);
+      console.dir(document);
+    </script>
+  </body>
+</html>

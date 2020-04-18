@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <div id="app">
+      <ul>
+        <li v-for="(fruit,index,a) in fruits">{{a}}({{index+1}}){{fruit}}</li>
+      </ul>
+      <ul>
+        <li v-for="(value,key,index) in object">
+          ({{index}}){{key}}-{{value}}
+        </li>
+      </ul>
+    </div>
+
+    <script type="text/javascript">
+      new Vue({
+        el: "#app",
+        data: {
+          fruits: ["リンゴ", "バナナ", "ブドウ"],
+          object: {
+            firstName: "太郎",
+            lastName: "田中",
+            age: 21
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

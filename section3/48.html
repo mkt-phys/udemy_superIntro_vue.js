@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <div id="app">
+      <ul>
+        <div v-for="(fruit,index) in fruits" :key="fruit">
+          <p>{{fruit}}</p>
+          <input type="text" />
+        </div>
+      </ul>
+      <button @click="remove">先頭を削除</button>
+    </div>
+
+    <script type="text/javascript">
+      new Vue({
+        el: "#app",
+        data: {
+          fruits: ["リンゴ", "バナナ", "ブドウ"]
+        },
+        methods: {
+          remove: function() {
+            this.fruits.shift();
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <div class="" id="app">
+      <p>{{counter}}</p>
+      <button @click="counter+=1">+1</button>
+      <p>{{lessThanThree}}</p>
+    </div>
+
+    <script type="text/javascript">
+      new Vue({
+        el: "#app",
+        data: {
+          counter: 0
+        },
+        computed: {
+          lessThanThree: function() {
+            console.log("computed");
+            return this.counter > 3 ? "3より上" : "3より下";
+          }
+        },
+        watch: {
+          counter: function() {
+            var vm = this;
+            setTimeout(function() {
+              vm.counter = 0;
+            }, 3000);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

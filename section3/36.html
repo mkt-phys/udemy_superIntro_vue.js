@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <div id="app">
+      <p v-if="ok">OK!</p>
+      <p v-else-if="maybeOk">maybe OK!</p>
+      <p v-else>Not OK...</p>
+    </div>
+
+    <script type="text/javascript">
+      new Vue({
+        el: "#app",
+        data: {
+          ok: false,
+          maybeOk: false
+        }
+      });
+    </script>
+  </body>
+</html>

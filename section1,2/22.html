@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <div class="" id="app">
+      <p>現在{{number}}回クリックされています</p>
+      <button @click="countUp(1)">カウントアップ</button>
+    </div>
+
+    <script type="text/javascript">
+      new Vue({
+        el: "#app",
+        data: {
+          message: "HelloWorld?",
+          number: 0,
+          event: "click"
+        },
+        methods: {
+          reverseMessage: function() {
+            this.message = this.message
+              .split("")
+              .reverse()
+              .join("");
+          },
+          countUp: function(times) {
+            this.number += 1 * times;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

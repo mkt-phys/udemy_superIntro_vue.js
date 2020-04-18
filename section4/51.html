@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <div id="app1">
+      <p>{{message}}</p>
+    </div>
+
+    <div id="app2">
+      <p>{{message}}</p>
+      <button @click="changeMessage1">インスタンス1のmessageを変更</button>
+    </div>
+
+    <script type="text/javascript">
+      var vm1 = new Vue({
+        el: "#app1",
+        data: {
+          message: "インスタンス1"
+        }
+      });
+
+      // vm1.message = "書き変えられました。";
+
+      var vm2 = new Vue({
+        el: "#app2",
+        data: {
+          message: "インスタンス2"
+        },
+        methods: {
+          changeMessage1: function() {
+            vm1.message = "インスタンス2から変えました。";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

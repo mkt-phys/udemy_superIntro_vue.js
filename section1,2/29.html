@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <div id="app">
+      <h1
+        v-bind:class="
+      classObject"
+      >
+        Hello
+      </h1>
+      <button @click="isActive=!isActive">切替</button>
+
+      <h1 :class="[color,bg]">Hello</h1>
+    </div>
+
+    <script type="text/javascript">
+      new Vue({
+        el: "#app",
+        data: {
+          isActive: true,
+          color: "red",
+          bg: "bg-blue"
+        },
+        computed: {
+          classObject: function() {
+            return { red: this.isActive, "bg-blue": !this.isActive };
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

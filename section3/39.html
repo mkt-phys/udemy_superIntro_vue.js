@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="jp" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <div id="app">
+      <button @click="ok = !ok">ボタン</button>
+      <p v-if="ok">Hello</p>
+      <p v-show="ok">Show</p>
+    </div>
+
+    <template> </template>
+    <script type="text/javascript">
+      new Vue({
+        el: "#app",
+        data: {
+          ok: true
+        }
+      });
+    </script>
+  </body>
+</html>
